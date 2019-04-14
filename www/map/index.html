@@ -9,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/waziup-js@0.0.18/lib/Waziup.js"></script>
   <script>
       var mymap = L.map('mapid').setView([48.341416, 7.681812], 12);
-      L.tileLayer('http://wxs.ign.fr/an7nvfzojv5wa96dsga5nk8w/geoportail/wmts?layer=ORTHOIMAGERY.ORTHOPHOTOS&style=normal&tilematrixset=PM&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fjpeg&TileMatrix={$z}&TileCol={$x}&TileRow={$y}.jpg', {
+      L.tileLayer('http://wxs.ign.fr/an7nvfzojv5wa96dsga5nk8w/geoportail/wmts?Service=WMTS&Request=GetTile&Layer=ORTHOIMAGERY.ORTHOPHOTOS&Style=normal&Version=1.0.0&Format=image%2Fjpeg&TILEMATRIXSET=PM&TileMatrix={$z}&TileCol={$x}&TileRow={$y}.jpg', {
          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
          maxZoom: 19,
          id: 'mapbox.streets',
