@@ -12,12 +12,12 @@
       L.tileLayer('http://wxs.ign.fr/{key}/geoportail/wmts?SERVICE={service}&VERSION={version}&REQUEST={request}&LAYER={layer}&STYLE={style}&FORMAT={format}&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}.jpg', {
          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
          key: 'an7nvfzojv5wa96dsga5nk8w',
-		     layer: 'ORTHOIMAGERY.ORTHOPHOTOS',
-		     service: 'WMTS',
-	    	 version: '1.0.0',
-    		 request: 'GetTile',
-	    	 style: 'normal',
-	    	 format: 'image/jpeg'
+	 layer: 'ORTHOIMAGERY.ORTHOPHOTOS',
+	 service: 'WMTS',
+	 version: '1.0.0',
+	 request: 'GetTile',
+	 style: 'normal',
+	 format: 'image/jpeg'
       }).addTo(mymap);
     
     Waziup.ApiClient.instance.basePath = 'https://api.waziup.io/api/v1'
