@@ -260,12 +260,16 @@
     }
 
     // map
-      var mymap = L.map('mapid').setView([-1.97, 30.1], 8);
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-         maxZoom: 8,
-         id: 'mapbox.streets',
-         accessToken: 'pk.eyJ1IjoiY2R1cG9udDIiLCJhIjoiY2pnZTVkZ2xsMGxyZTJ4cjA5dDZ4cjNneSJ9.NJT7CULfcY0mjeavffR_vg'
+      var mymap = L.map('mapid').setView([48.341416, 7.681812], 18);
+      L.tileLayer('http://wxs.ign.fr/{key}/geoportail/wmts?SERVICE={service}&VERSION={version}&REQUEST={request}&LAYER={layer}&STYLE={style}&FORMAT={format}&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}.jpg', {
+         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.geoportail.gouv.fr/">Géoportail</a>',
+         key: 'an7nvfzojv5wa96dsga5nk8w',
+	 layer: 'ORTHOIMAGERY.ORTHOPHOTOS',
+	 service: 'WMTS',
+	 version: '1.0.0',
+	 request: 'GetTile',
+	 style: 'normal',
+	 format: 'image/jpeg'
       }).addTo(mymap);
     
     Waziup.ApiClient.instance.basePath = 'https://api.waziup.io/api/v1'
