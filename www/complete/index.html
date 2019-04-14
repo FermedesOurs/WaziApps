@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+	  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+	  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
 
     <title>WaziUp</title>
   </head>
@@ -79,6 +81,7 @@
     <script src="https://cdn.jsdelivr.net/npm/waziup-js@1.1.6/lib/Waziup.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/waziup-js@0.0.18/lib/Waziup.js"></script>
     <script>
     $(document).ready(function () {
       //  When user clicks on tab, this code will be executed
@@ -257,28 +260,25 @@
     }
 
     // map
-    var mymap = L.map('mapid').setView([48.341416, 7.681812], 18);
-    L.tileLayer('http://wxs.ign.fr/{key}/geoportail/wmts?SERVICE={service}&VERSION={version}&REQUEST={request}&LAYER={layer}&STYLE={style}&FORMAT={format}&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}.jpg', {
-         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.geoportail.gouv.fr/">Géoportail</a>',
-         key: 'an7nvfzojv5wa96dsga5nk8w',
-	 layer: 'ORTHOIMAGERY.ORTHOPHOTOS',
-	 service: 'WMTS',
-	 version: '1.0.0',
-	 request: 'GetTile',
-	 style: 'normal',
-	 format: 'image/jpeg'
-    }).addTo(mymap);
-
+      var mymap = L.map('mapid').setView([-1.97, 30.1], 8);
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+         maxZoom: 8,
+         id: 'mapbox.streets',
+         accessToken: 'pk.eyJ1IjoiY2R1cG9udDIiLCJhIjoiY2pnZTVkZ2xsMGxyZTJ4cjA5dDZ4cjNneSJ9.NJT7CULfcY0mjeavffR_vg'
+      }).addTo(mymap);
+    
+    Waziup.ApiClient.instance.basePath = 'https://api.waziup.io/api/v1'
+    var api = new Waziup.SensorsApi()
     var markers = []
-    api.getSensors({
-      limit: 1000
-    }).then((sensors) => {
-      for (sensor of sensors) {
-        if (sensor.location) {
+    api.getSensors("waziup", {limit:1000}).then((sensors) =>{
+      console.log("data" + JSON.stringify(sensors))
+      for(sensor of sensors) {
+        if(sensor.location) {
           L.marker([sensor.location.latitude, sensor.location.longitude]).addTo(mymap);
         }
       }
-    })
+    }
     </script>
   </body>
 </html>
